@@ -1,0 +1,35 @@
+using System;
+
+namespace CesarEncryption
+{
+    class Class1
+    {
+        public static void Main()
+        {
+            Console.WriteLine("Şifrelenecek Kelime: ");
+            string kelime=Console.ReadLine();
+            string sifrelikelime="";
+            string harf;
+            string alfabe =  ("abcçdefgğehıijklmnoöprsştuüvyz");
+            //Console.WriteLine(alfabe.IndexOf('z'));       
+              for (int i = 0; i <kelime.Length; i++)
+                {
+                   harf = kelime.ElementAt(i).ToString();
+                   for (int k= 0;k<alfabe.Length;k++)
+                {
+                   
+                   
+                    if (harf.Equals(alfabe.ElementAt(k).ToString()))
+                    {
+                        if((k+2)>alfabe.Length-1)
+                            sifrelikelime += alfabe.ElementAt((k+2)-(alfabe.Length)).ToString();                       
+                        else
+                        sifrelikelime += alfabe.ElementAt(k + 2).ToString();
+                    }
+                }
+            }
+              Console.WriteLine("şifreli kelime: " + sifrelikelime);
+              Console.ReadKey();
+        }
+    }
+}
