@@ -1,0 +1,102 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Genel
+{
+    class solution
+    {
+        public int temp;
+
+        public string reverse(int x)
+        {
+
+            StringBuilder builder = new StringBuilder();
+            String holder = x.ToString();
+            char[] chars = holder.ToCharArray();
+
+            int[] numbers = new int[chars.Length];
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = Convert.ToInt32(chars[i]);
+            }
+            //sayımızı nihayet bir diziye aktarabildik
+            //reverse işlemleri
+            if (numbers.Length==4)
+            {
+                temp=numbers[0];
+                numbers[0]=numbers[3];
+                numbers[3]=temp;
+                temp=numbers[2];
+                numbers[2]=numbers[1];
+                numbers[1]=temp;
+                temp=0;
+                 for (int i = 0; i < numbers.Length; i++)
+                {
+                    
+                    chars[i] = Convert.ToChar(numbers[i]);
+                    
+                }
+                
+                foreach (var item in chars)
+                {
+                    builder.Append(item);
+
+                }
+                return builder.ToString();
+            }
+
+            if (numbers.Length == 3)
+            {
+                temp = numbers[0];
+                numbers[0] = numbers[2];
+                numbers[2] = temp;
+                temp = 0;
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    chars[i] = Convert.ToChar(numbers[i]);
+                    
+                }
+                foreach (var item in chars)
+                {
+                    builder.Append(item);
+
+                }
+                return builder.ToString();
+            }
+            else if (numbers.Length==2)
+            {
+                temp = numbers[0];
+                numbers[0] = numbers[1];
+                numbers[1] = temp;
+                temp = 0;
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    chars[i] = Convert.ToChar(numbers[i]);
+                }
+
+              
+                foreach (var item in chars)
+                {
+                    builder.Append(item);
+                    
+                }
+                return builder.ToString();
+            }
+            
+            return "2 veya 3 haneli bir sayı giriniz!";
+        }
+
+        public static void Main(string[] args)
+        {
+            solution obj = new solution();
+            Console.WriteLine("2,3 veya 4 haneli bir sayı giriniz");
+            string sonuc = obj.reverse(Convert.ToInt32(Console.ReadLine()));
+            Console.WriteLine(sonuc);
+            Console.ReadKey();
+        }
+        
+    }
+}
